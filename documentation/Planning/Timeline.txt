@@ -1,0 +1,39 @@
+Tentative timeline:
+9/13: Have a complete list of features and a good idea what the final product will be
+
+9/18: Be familliar with visual studio and RSS feeds
+
+9/20: Have requirement specifications laid out
+
+9/22: Have begun programming, the basics 
+
+9/27: UML design
+
+9/29: Create first files of application, main html and css
+
+10/2: Have actual functionality for the search, returns a result
+
+10/4: Test Plan laid out 
+
+10/6: Finalize design layout
+
+10/11: Have rest of Del. 2 finished
+
+10/12: Begin heavy coding period. Focus on sidebar functionalty and sidebar navigation destinations
+
+10/20: Have sidebar functionality and city list completed, begin working on city homepage html and CSS  
+
+10/23: Have top half of city homepage finished, begin working on main city page information tabs
+
+10/27: Have a working city list, begin working on city page details, begin working on login system and database
+
+11/3: Have most front end development done, begin working on user account functionality and trip calculator
+
+11/6: App should be mostly put together, begin preparation for del. 3 by going over previous
+		code. Continue working on polishing code.
+
+11/12: Have code ready for inspection
+
+11/13: Testing and polishing
+
+11/27: Completion

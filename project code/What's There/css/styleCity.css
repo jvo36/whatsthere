@@ -1,0 +1,305 @@
+/* CSS Grid Formatting v0.3*/
+body{
+	display: grid;
+
+	/*background: url('../img/mainmenu.jpg') no-repeat center center fixed;*/
+	grid-template-columns: 60px 1fr; /* Two Rows and 2 columns*/
+	grid-template-rows: 1fr 2fr;
+	grid-template-areas: "sidebar main1"
+											 "sidebar main2";
+	font-family: Palatino Linotype;
+	height: 100vh;
+	width: 100vw;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+/* Parent nav class for sidebar buttons */
+.aside {
+  grid-area: sidebar;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	background: #383332; /* Nav Color */
+/*	background-color: #ffffff; */
+	font-size: 150%;
+	border: solid #9ca4a6 2px; /* Add right, left, bottom borders to all main-nav elements */
+	position:fixed;
+	height: 100%;
+	width: 60px;
+	}
+
+/* show icons */
+.aside i {
+	display: block;
+	color: white;
+}
+
+.aside i:hover{
+	box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)
+}
+
+.main1{
+	grid-area: main1;
+	display: grid;
+	grid-template-columns: 2fr 2fr 1fr;
+	grid-template-areas: "header weather"
+											 "slideshow weather";
+  position: relative;
+  top: 0px;
+  bottom: auto;
+  right: auto;
+  left: 0px;
+	background-color: #432983;
+}
+
+/* dallas */
+.main1 h1{
+	grid-area: header;
+	text-align: center;
+	font-size: 500%;
+	color: #FFFFFF;
+	text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;
+  position: relative;
+  top: 8px;
+  bottom: auto;
+  right: auto;
+  left: 16px;
+
+}
+
+.slideshow{
+	grid-area: slideshow;
+	position: relative;
+}
+
+.weather{
+	grid-area: weather;
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-areas:"w_header"
+											"temperature"
+											"description"
+											"wind"
+											"w_icon"
+											"w_button";
+  position: relative;
+	border-radius: 5px;
+	text-align: center;
+	/*align-items: stretch;*/
+
+	background-color: #3090C7; /* Blue Ivy */
+}
+
+.weather h4{
+	grid-area: w_header;
+	font-size: 200%;
+	color: #DEAC27;
+	text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;
+  position: relative;
+  text-align: center;
+	display: block;
+	align-items: center;
+}
+
+.temperature{
+		grid-area: temperature;
+		font-size: 300%;
+		text-align: center;
+		position: relative;
+		display: block;
+}
+
+.wind{
+	display: block;
+	font-size: 150%;
+	grid-area: wind;
+	position: relative;
+}
+
+.w_description{
+	display: block;
+	font-size: 150%;
+	grid-area: description;
+	position: relative;
+}
+.w_icon{
+	display: block;
+	grid-area: w_icon;
+	position: relative;
+
+}
+.w_expand{
+display:block;
+grid-area: w_button;
+position:relative;
+justify-content: flex-end;
+
+}
+.footer {
+  grid-area: footer;
+	color: black;
+	style: bold;
+	font-size: 200%;
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main2{
+	grid-area: main2;
+	display: grid;
+	grid-template-areas: "Geo Attr"
+											 "Hotel Rest"
+											 "Traff Transp";
+}
+
+
+
+
+.btn {
+    border-radius: 0;
+    -webkit-transition: all 0.3s;
+       -moz-transition: all 0.3s;
+            transition: all 0.3s;
+}
+
+
+
+.modal-body{
+
+	overflow-y: scroll;
+
+}
+
+
+
+
+.geo{
+	grid-area: Geo;
+	background-color: green;
+
+
+}
+
+.attraction{
+	grid-area: Attr;
+	background-color: red;
+}
+
+.hotel{
+	grid-area: Hotel;
+	background-color: orange;
+}
+
+.restaurant{
+	grid-area: Rest;
+	background-color: purple;
+}
+
+.traffic{
+	grid-area: Traff;
+	background-color: yellow;
+}
+
+.transport{
+	grid-area: Transp;
+	background-color: gray;
+}
+
+
+#listing {
+	 position: absolute;
+	 width: 200px;
+	 height: 470px;
+	 overflow: auto;
+	 left: 442px;
+	 top: 0px;
+	 cursor: pointer;
+	 overflow-x: hidden;
+	 }
+	 #findhotels {
+	 position: absolute;
+	 text-align: right;
+	 width: 100px;
+	 font-size: 14px;
+	 padding: 4px;
+	 z-index: 5;
+	 background-color: #fff;
+	 }
+	 #locationField {
+	 position: absolute;
+	 width: 190px;
+	 height: 25px;
+	 left: 108px;
+	 top: 0px;
+	 z-index: 5;
+	 background-color: #fff;
+	 }
+	 #controls {
+	 position: absolute;
+	 left: 300px;
+	 width: 140px;
+	 top: 0px;
+	 z-index: 5;
+	 background-color: #fff;
+	 }
+	 #autocomplete {
+	 width: 100%;
+	 }
+	 #country {
+	 width: 100%;
+	 }
+	 .placeIcon {
+	 width: 20px;
+	 height: 34px;
+	 margin: 4px;
+	 }
+	 .hotelIcon {
+	 width: 24px;
+	 height: 24px;
+	 }
+	 #resultsTable {
+	 border-collapse: collapse;
+	 width: 240px;
+	 }
+	 #rating {
+	 font-size: 13px;
+	 font-family: Arial Unicode MS;
+	 }
+	 .iw_table_row {
+	 height: 18px;
+	 }
+	 .iw_attribute_name {
+	 font-weight: bold;
+	 text-align: right;
+	 }
+	 .iw_table_icon {
+	 text-align: right;
+	 }
+
+
+/*=============================
+  larger screens
+===============================*/
+
+@media only screen and (min-width:600px) {
+  body {
+    grid-template-columns: 60px 1fr;
+		grid-template-rows: 1fr 2fr;
+		grid-template-areas: "sidebar main1"
+			                   "sidebar main2";
+  }
+
+	.main1{
+		grid-area: main1;
+		display: grid;
+		grid-template-columns: 2fr 2fr 1fr;
+		grid-template-areas: "header slideshow weather";
+	  position: relative;
+	  top: 0px;
+	  bottom: auto;
+	  right: auto;
+	  left: 0px;
+		background-color: #4d4848;
+	}
+}

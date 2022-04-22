@@ -1,0 +1,13 @@
+Discussion: Continued discussing the features, and began to discuss development environments.
+Decided it would be best to do a desktop app rather than mobile. 
+
+New features:
+    - Search bar should be two dropdown menus, first select from supported states, then select
+    supported city from the state.
+    - This app doesn't need to be limited to travel, residents can use it as a central information
+    hub where they can find their city info in one place.
+    - Besides general geography of the area, we could include hiking locations etc.
+    - Environment tips for travelers.
+    
+Development:
+    - Plan to use Visual Studio with C++

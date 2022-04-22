@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<!-- Page meta data -->
+	<head>
+		<title id="cityname">Dallas</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta name="description" content="An all in one travel app that helps you get out and explore.">
+		 <meta name="keywords" content="travel, travel information, weather, local weather">
+		 <meta name="author" content="Garrett Brumley">
+
+		 <!-- CSS -->
+		 <link rel="stylesheet" href="./css/styleCity.css"> <!-- Link with styleCity.css -->
+
+    <!-- Bootstrap -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	  <!-- Javascript -->
+		<script src="js/main.js"></script>
+		<script src="js/city.js"></script>
+
+		<!-- Angularjs  -->
+		<!-- <script src="jquery-3.2.1.min.js"></script> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<!-- <script
+	  src="https://code.jquery.com/jquery-3.2.1.js"
+	  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+	  crossorigin="anonymous"></script> -->
+
+	</head>
+
+	<body>
+		<!-- Nav Bar -->
+		<div class="aside">
+			<a href="index.html"><i class="glyphicon glyphicon-off"></i></a> <!-- login box -->
+
+			<div class="dropdown">
+    	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-road"></i></a> <!-- should open a menu inside the icon -->
+				<div class="dropdown-menu">
+					<li><a href="dallas.html">Dallas</a></li>
+					<li><a href="austin.html">Austin</a></li>
+					<li><a href="losangeles.html">Los Angeles</a></li>
+				</div>
+			</div>
+			<a href="./cal/cal_test.html"><i class="glyphicon glyphicon-usd"></i></a>
+			<a href="about.html"><i class="glyphicon glyphicon-exclamation-sign"></i></a> <!-- contact and about -->
+		</div>
+
+					<div class="main1">
+						<h1>Dallas, Texas</h1>
+						<!-- Slideshow -->
+						<div class="slideshow">
+							<div id="my-slider" class="carousel slide" data-ride="carousel">
+
+								<!-- dot nav indicators -->
+								<ol class="carousel-indicators">
+									<li data-target="#my-slider" data-slide-to="0" class="active"></li>
+									<li data-target="#my-slider" data-slide-to="1"></li>
+									<li data-target="#my-slider" data-slide-to="2"></li>
+									<li data-target="#my-slider" data-slide-to="3"></li>
+									<li data-target="#my-slider" data-slide-to="4"></li>
+								</ol>
+
+								<!-- wrapper for slides -->
+								<div class="carousel-inner" role="listbox">
+										<div class="item active">
+												<img src="img\Dallas\carousel\Dallas1.jpg"/>
+										</div>
+										<div class="item">
+												<img src="img\Dallas\carousel\Dallas2.jpg"/>
+										</div>
+										<div class="item">
+												<img src="img\Dallas\carousel\Dallas3.jpg"/>
+										</div>
+										<div class="item">
+												<img src="img\Dallas\carousel\Dallas4.jpg"/>
+										</div>
+										<div class="item">
+												<img src="img\Dallas\carousel\Dallas5.jpg"/>
+										</div>
+								</div>
+								<!-- Nav buttons -->
+								<a class="left carousel-control" href="#my-slider" role="button" data-slide="prev">
+										<span class="glyphicon glyphicon-chevron-left"></span>
+									</a>
+								<a class="right carousel-control" href="#my-slider" role="button" data-slide="next">
+									  <span class="glyphicon glyphicon-chevron-right"></span>
+									</a>
+							</div>
+						</div>
+
+						<!-- Weather box -->
+						<div class="weather">
+							<h4>Weather</h4>
+							<div class="temperature"> <!-- Temperature -->
+								<span id="temperature">0</span>&deg;
+							</div>
+							<div class="w_description">
+								<span id="description">Unknown</span>
+							</div>
+							<div class="wind">Wind:  <!-- Wind speed and direction -->
+								<span id="wind">0</span>mph <span id="direction">N</span>
+							</div>
+							<div class="w_icon"> <!-- Weather Icon -->
+								<img id="icon" width=100px src="http://openweathermap.org/img/w/10d.png"/>
+							</div> <!-- Weather Icon -->
+						</div>
+					</div>
+		<!--	</div> -->
+				<!-- Footer -->
+		<div class="main2">
+			<!--<div class="geo"><button class="geobutton">Geography and Environment</button></div>-->
+			<button type="button" class="btn gbutton btn-success " data-toggle="modal" data-target="#geoModal" >
+			Geography and Environment</button>
+			<!--<div class="attraction"><button class="attractionbutton">Attractions</button></div>-->
+			<button type="button" class="btn btn-info abutton" data-toggle="modal" data-target="#attractionsModal">
+  Attractions</button>
+			<!--<div class="hotel"><button class="hotelbutton">Hotels</button></div>-->
+			<button type="button" class="btn btn-default hotelsModal">
+  Hotels</button>
+			<!--<div class="restaurant"><button class="restaurantbutton">Restaurants</button></div>  class="btn btn-warning" -->
+			<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#restaurantsModal">
+  Restaurants</button>
+			<!--<div class="traffic"><button class="trafficbutton">Traffic</button></div>   btn-danger-->
+
+			<button type="button"  class="btn btn-danger trafficModal">
+  Traffic</button>
+
+			<!--<div class="transport"><button class="transportbutton">Public Transport</button></div>-->
+			<button type="button" class="btn btn-primary transportModal" >
+  Public Transport</button>
+		</div>
+		<!--modals-->
+
+		<!--geo-->
+		<div class="modal fade" id="geoModal" tabindex="-1" role="dialog" aria-labelledby="geoModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document" style="width:90%; height: 90%">
+				<div class="modal-content" style="width:100%; height: 100%">
+		  		<div class="modal-header">
+		    		<h2 class="modal-title" id="geoModalLabel">Dallas Geography and Environment Information</h2>
+		    		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		      	<span aria-hidden="true">&times;</span>
+		    		</button>
+		  		</div>
+		  		<div class="modal-body" style="width:100%; height:80%">
+						<p> Dallas is located in north-central Texas, 70 miles south of the Oklahoma border, 174 miles west of Louisiana, and approximately 250 miles north of the Gulf of Mexico. The city is situated on the rolling plains near the headwaters of the Trinity River in an area known as the black-land prairies, midway between the Piney Woods of east Texas and the Great Plains. The general area has an unusual concentration of man-made lakes. Its climate is humid and subtropical, characterized by hot summers and mild winters, with snowfall rare. Within a 100-mile radius of the city, there are more than 60 lakes and over 50,000 acres of public parkland. The rainy season occurs in April and May; July and August are the driest summer months. </p>
+
+						<p>Area: 342.54 square miles (2000)</p>
+
+						<p>Elevation: Ranges from 500 to 800 feet above sea level</p>
+
+						<p>Average Temperatures: January, 45.44° F; August, 85.72° F; annual average, 66.42° F</p>
+
+						<p>Average Annual Precipitation: 35.77 inches</p>
+
+						<p>Data from: http://www.city-data.com/</p>
+		  		</div>
+		  		<div class="modal-footer">
+		    		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+		  		</div>
+				</div>
+			</div>
+		</div>
+
+		<!--attractions-->
+
+		<div class="modal fade" id="attractionsModal" tabindex="-1" role="dialog" aria-labelledby="attractionsModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document" style="width:90%; height: 90%">
+				<div class="modal-content" style="width:100%; height: 100%" >
+					<div class="modal-header">
+						<h2 class="modal-title" id="attractionsModalLabel">Dallas Attractions</h2>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		  			<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" style="width:100%; height: 80%" >
+				<h3>Top attractions include:</h3>
+
+				<img src="./cal/Dallas/DAB_15_p8.jpg"/>
+				<h4>Dallas Arboretum and Botanical Garden</h4>
+				<p>Lakeside botanical garden & event venue. 70-acre botanical garden set on White Rock Lake with frequent concerts, special exhibits & classes.</p>
+
+				<img src="./cal/Dallas/DWA_22.jpg"/>
+				<h4>Dallas World Aquarium</h4>
+				<p>Exotic animals in replica habitats</p>
+				<p>Replica habitats containing exotic birds, mammals & fish are open for public tours & private events.</p>
+
+				<img src="./cal/Dallas/SFM_16.jpg"/>
+				<h4>Sixth Floor Museum at Dealey Plaza</h4>
+				<p>Exhibits at JFK assassination site</p>
+				<p>Comprehensive exhibits on John F. Kennedy's presidency & assassination at site of the sniper's nest.</p>
+
+				<img src="./cal/NSC_10.jpg"/>
+				<h4>Nasher Sculpture Center</h4>
+				<p>Museum showcasing modern sculptures</p>
+				<p>Education & research facility featuring rotating exhibits of contemporary sculptures & a cafe.</p>
+
+				<img src="./cal/Dallas/DZOO_15.jpg"/>
+				<h4>Dallas Zoo</h4>
+				<p>2,000 animals throughout 95 acres</p>
+				<p>Housing 2,000 animals, with a renowned children's area & monorail-viewed African habitat.</p>
+
+				<img src="./cal/Dallas/DMA.jpeg"/>
+				<h4>Dallas Museum of Art</h4>
+				<p>Art collection spanning 5,000 years</p>
+				<p>Arts District anchor with an encyclopedic collection spanning ancient times to the present.</p>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--hotels-->
+		<div class="modal fade" id="hotelsModal">
+			<div class="modal-dialog" role="document" style="width:90%; height: 90%">
+				<div class="modal-content" style="width:100%; height: 100%">
+					<div class="modal-header">
+						<h2 class="modal-title" id="hotelsModalLabel">Dallas Hotels</h2>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	  				<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" style="width:100%; height: 80%">
+					<iframe src="map_hotels.php" width="100%" height="100%" scrolling="no" style="overflow:hidden !important"></iframe>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--restaurants-->
+		<div class="modal fade" id="restaurantsModal">
+			<div class="modal-dialog" role="document" style="width:90%; height: 90%">
+				<div class="modal-content" style="width:100%; height:100%">
+	  		<div class="modal-header">
+	    	<h2 class="modal-title" id="restaurantsModalLabel">Dallas Restaurants</h2>
+	    	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	      	<span aria-hidden="true">&times;</span>
+	    	</button>
+	  	</div>
+	  	<div id="res" class="modal-body" style="width:100%; height:80%">
+		<div class="widget_wrap" style="width:100%;height:100%;display:inline-block;">
+			<iframe src="https://www.zomato.com/widgets/res_search_widget.php?entity_id=276&entity_type=city&city_id=276&theme=dark&widgetType=custom&sort=popularity" style="position:relative;width:100%;height:100%;" border="0" frameborder="0"></iframe>
+		</div>
+	  	</div>
+	  	<div class="modal-footer">
+	    	<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+	  	</div>
+		</div>
+		</div>
+	</div>
+
+
+
+		<!--traffic-->
+		<div class="modal fade" id="trafficModal" >
+			<div class="modal-dialog" role="document" style="width:90%; height: 90% ">
+				<div class="modal-content" style="width:100%; height:100% ">
+					<div class="modal-header">
+						<h2 class="modal-title" id="trafficModalLabel">Dallas Traffic</h2>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		  				<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div id="map_traffic" class="modal-body" style="width:100%; height: 80% ">
+
+
+				</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<!--transport-->
+			<div class="modal fade" id="transportModal">
+				<div class="modal-dialog" role="document" style="width:90%; height: 90% ">
+					<div class="modal-content" style="width:100%; height: 100% ">
+						<div class="modal-header">
+							<h2 class="modal-title" id="transportModalLabel">Dallas transport</h2>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		  				<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div id="map_transport"  class="modal-body" style="width:100%; height: 80% ">
+
+
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+<script>
+
+	    var map;//for google maps
+		var places;//for the hotale places
+	    var infowindow;//to hold hotels informations
+
+        coordinate = {lat: 32.789364, lng: -96.801781};//city coordinate
+				//will hold the maps for a city
+       var common_map = function(x){
+           console.log(x);
+            var map = new google.maps.Map(document.getElementById(x), {
+					zoom: 13,
+					center:coordinate
+		   });
+            return map;
+      }
+			//to inilzeing masps
+	  var initMap = function() {
+			var trafficLayer = new google.maps.TrafficLayer();
+			trafficLayer.setMap(common_map('map_traffic'));
+
+            var transitLayer = new google.maps.TransitLayer();
+            transitLayer.setMap(common_map('map_transport'));
+
+	  }
+
+		  $('.trafficModal').on('click', function () {
+			$('#trafficModal').modal('show').on('shown.bs.modal', function () {
+				common_map('map_traffic');
+                var trafficLayer = new google.maps.TrafficLayer();
+			   trafficLayer.setMap(common_map('map_traffic'));
+
+			});
+		});
+
+	  $('.transportModal').on('click', function () {
+			$('#transportModal').modal('show').on('shown.bs.modal', function () {
+				common_map('map_transport');
+                var transitLayer = new google.maps.TransitLayer();
+                 transitLayer.setMap(common_map('map_transport'));
+			});
+		});
+
+		$('.hotelsModal').on('click', function () {
+			$('#hotelsModal').modal('show').on('shown.bs.modal', function () {
+
+			  infowindow = new google.maps.InfoWindow();
+			  var service = new google.maps.places.PlacesService(common_map('map_place'));
+			  service.nearbySearch({
+				location: coordinate,
+				radius: 500,
+				type: ['store']
+			  }, callback);
+			});
+		});
+    </script>
+   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFbs8xFC9jvVb0GVmF-j9B0RXTFSc0iNU&libraries=places&callback=initMap"></script>
+
+	</body>
+
+</html>

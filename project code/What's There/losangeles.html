@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<!-- Page meta data -->
+	<head>
+		<title id="cityname">Los Angeles</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta name="description" content="An all in one travel app that helps you get out and explore.">
+		 <meta name="keywords" content="travel, travel information, weather, local weather">
+		 <meta name="author" content="Garrett Brumley">
+
+		 <!-- CSS -->
+		 <link rel="stylesheet" href="./css/styleCity.css"> <!-- Link with styleCity.css -->
+
+    <!-- Bootstrap -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	  <!-- Javascript -->
+		<script src="js/main.js"></script>
+		<script src="js/city.js"></script>
+
+		<!-- Angularjs  -->
+		<!-- <script src="jquery-3.2.1.min.js"></script> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<!-- <script
+	  src="https://code.jquery.com/jquery-3.2.1.js"
+	  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+	  crossorigin="anonymous"></script> -->
+
+	</head>
+
+	<body>
+		<!-- Nav Bar -->
+		<div class="aside">
+			<a href="index.html"><i class="glyphicon glyphicon-off"></i></a> <!-- login box -->
+
+			<div class="dropdown">
+    	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-road"></i></a> <!-- should open a menu inside the icon -->
+				<div class="dropdown-menu">
+					<li><a href="dallas.html">Dallas</a></li>
+					<li><a href="austin.html">Austin</a></li>
+					<li><a href="losangeles.html">Los Angeles</a></li>
+				</div>
+			</div>
+			<a href="./cal/cal_test.html"><i class="glyphicon glyphicon-usd"></i></a>
+			<a href="about.html"><i class="glyphicon glyphicon-exclamation-sign"></i></a> <!-- contact and about -->
+		</div>
+
+					<div class="main1">
+						<h1>Los Angeles, California</h1>
+						<!-- Slideshow -->
+						<div class="slideshow">
+							<div id="my-slider" class="carousel slide" data-ride="carousel">
+
+								<!-- dot nav indicators -->
+								<ol class="carousel-indicators">
+									<li data-target="#my-slider" data-slide-to="0" class="active"></li>
+									<li data-target="#my-slider" data-slide-to="1"></li>
+									<li data-target="#my-slider" data-slide-to="2"></li>
+									<li data-target="#my-slider" data-slide-to="3"></li>
+                  <li data-target="#my-slider" data-slide-to="4"></li>
+								</ol>
+
+								<!-- wrapper for slides -->
+								<div class="carousel-inner" role="listbox">
+										<div class="item active">
+												<img src="img\LosAngeles\carousel\LA1.jpg"/>
+										</div>
+										<div class="item">
+												<img src="img\LosAngeles\carousel\LA2.jpg"/>
+										</div>
+										<div class="item">
+												<img src="img\LosAngeles\carousel\LA3.jpg"/>
+										</div>
+										<div class="item">
+												<img src="img\LosAngeles\carousel\LA4.jpg"/>
+										</div>
+                    <div class="item">
+												<img src="img\LosAngeles\carousel\LA5.jpg"/>
+										</div>
+								</div>
+								<!-- Nav buttons -->
+								<a class="left carousel-control" href="#my-slider" role="button" data-slide="prev">
+										<span class="glyphicon glyphicon-chevron-left"></span>
+									</a>
+								<a class="right carousel-control" href="#my-slider" role="button" data-slide="next">
+									  <span class="glyphicon glyphicon-chevron-right"></span>
+									</a>
+							</div>
+						</div>
+
+						<!-- Weather box -->
+						<div class="weather">
+							<h4>Weather</h4>
+							<div class="temperature"> <!-- Temperature -->
+								<span id="temperature">0</span>&deg;
+							</div>
+							<div class="w_description">
+								<span id="description">Unknown</span>
+							</div>
+							<div class="wind">Wind:  <!-- Wind speed and direction -->
+								<span id="wind">0</span>mph <span id="direction">N</span>
+							</div>
+							<div class="w_icon"> <!-- Weather Icon -->
+								<img id="icon" width=100px src="http://openweathermap.org/img/w/10d.png"/>
+							</div> <!-- Weather Icon -->
+						</div>
+					</div>
+		<!--	</div> -->
+				<!-- Footer -->
+		<div class="main2">
+			<!--<div class="geo"><button class="geobutton">Geography and Environment</button></div>-->
+			<button type="button" class="btn gbutton btn-success " data-toggle="modal" data-target="#geoModal" >
+			Geography and Environment</button>
+			<!--<div class="attraction"><button class="attractionbutton">Attractions</button></div>-->
+			<button type="button" class="btn btn-info abutton" data-toggle="modal" data-target="#attractionsModal">
+  Attractions</button>
+			<!--<div class="hotel"><button class="hotelbutton">Hotels</button></div>-->
+			<button type="button" class="btn btn-default hotelsModal">
+  Hotels</button>
+			<!--<div class="restaurant"><button class="restaurantbutton">Restaurants</button></div>-->
+			<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#restaurantsModal" id="ff">
+  Restaurants</button>
+			<!--<div class="traffic"><button class="trafficbutton">Traffic</button></div>-->
+			<button type="button" class="btn btn-danger trafficModal">
+  Traffic</button>
+			<!--<div class="transport"><button class="transportbutton">Public Transport</button></div>-->
+			<button type="button" class="btn btn-primary transportModal" >
+  Public Transport</button>
+		</div>
+		<!--modals-->
+
+		<!--geo-->
+		<div class="modal fade" id="geoModal" tabindex="-1" role="dialog" aria-labelledby="geoModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document" style="width:90%; height: 90%">
+				<div class="modal-content" style="width:100%; height: 100%">
+		  		<div class="modal-header">
+		    		<h2 class="modal-title" id="geoModalLabel">Los Angeles Geography and Environment Information</h2>
+		    		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		      	<span aria-hidden="true">&times;</span>
+		    		</button>
+		  		</div>
+		  		<div class="modal-body" style="width:100%; height:80%">
+
+            <p> Los Angeles lies on a hilly coastal plain with the Pacific Ocean as its southern and western boundaries. The city stretches north to the foothills of the Santa Monica Mountains and is bounded by the San Gabriel Mountains to the east. Numerous canyons and valleys also characterize the region, making it an area of diverse climatic conditions. The predominant weather influence is the warm, moist Pacific air, keeping temperatures mild throughout the year. Summers are dry and sunny—the city averages 329 days of sun per year—with most of the precipitation occurring during the winter months. Smog and air pollution are common problems, gathering in the coastal basin during periods of little air movement. Other unusual weather phenomena include the Santa Ana winds, which bring hot, dusty winds of up to 50 miles per hour from the surrounding mountains, and the occasional flash floods in the canyon areas, causing mudslides.</p>
+
+            <p>Area: 469.1 square miles (2000)</p>
+
+            <p>Elevation: 340 feet above sea level</p>
+
+            <p>Average Temperatures: January, 57.0° F; August, 72.0° F; annual average, 63.9° F</p>
+
+            <p>Annual Average Precipitation: 17 inches</p>
+
+						<p>Data from: http://www.city-data.com/</p>
+		  		</div>
+		  		<div class="modal-footer">
+		    		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+		  		</div>
+				</div>
+			</div>
+		</div>
+
+		<!--attractions-->
+
+		<div class="modal fade" id="attractionsModal" tabindex="-1" role="dialog" aria-labelledby="attractionsModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document" style="width:90%; height: 90%">
+				<div class="modal-content" style="width:100%; height: 100%" >
+					<div class="modal-header">
+						<h2 class="modal-title" id="attractionsModalLabel">Los Angeles Attractions</h2>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		  			<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" style="width:100%; height: 80%" >
+				<h3>Top attractions include:</h3>
+        <img src="./cal/Los_Angeles/Disneyland_110.jpg"/>
+        <h4>Disneyland</h4>
+
+        <p>Famed amusement park with 8 themed lands</p>
+        <p>Iconic amusement park featuring 8 themed "lands" with rides, shows & costumed characters.</p>
+
+        <img src="./cal/Los_Angeles/Museum_of_Contemporary_Art,_Los_Angeles_15.jpg"/>
+        <h4>Museum of Contemporary Art, Los Angeles</h4>
+
+        <p>Renowned collection of post-1940 works</p>
+        <p>An airy space showcasing masters in Pop Art & abstract expressionism as well as emerging artists.</p>
+
+        <img src="./cal/Los_Angeles/Los_Angeles_Zoo_21.jpg"/>
+        <h4>Los Angeles Zoo</h4>
+
+        <p>Lush zoo with more than 250 species</p>
+        <p>Zoo & botanical gardens open since 1966 containing more than 250 animal species & 800 plant species.</p>
+
+        <img src="./cal/Los_Angeles/Hollywood_Wax_Museum_23.jpg"/>
+        <h4>Hollywood Wax Museum</h4>
+
+        <p>Museum containing waxwork celebrities</p>
+        <p>Famous Hollywood faces are cast out of wax at this museum open late on Fridays & Saturdays.</p>
+        <img src="./cal/Los_Angeles/Petersen_Automotive_Museum_16.jpg"/>
+        <h4>Petersen Automotive Museum</h4>
+
+        <p>Showing classic hot rods & concept cars</p>
+        <p>A vast collection of autos including restored antiques, race cars & vehicles from famous movies.</p>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--hotels-->
+		<div class="modal fade" id="hotelsModal">
+			<div class="modal-dialog" role="document" style="width:90%; height: 90%">
+				<div class="modal-content" style="width:100%; height: 100%">
+					<div class="modal-header">
+						<h2 class="modal-title" id="hotelsModalLabel">Los Angeles Hotels</h2>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	  				<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" style="width:100%; height: 80%">
+					<iframe src="map_hotels.php" width="100%" height="100%" scrolling="no" style="overflow:hidden !important"></iframe>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary btn-xs" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--restaurants-->
+		<div class="modal fade" id="restaurantsModal">
+			<div class="modal-dialog" role="document" style="width:90%; height: 90%">
+				<div class="modal-content" style="width:100%; height:100%">
+	  		<div class="modal-header">
+	    	<h2 class="modal-title" id="restaurantsModalLabel">Los Angeles Restaurants</h2>
+	    	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	      	<span aria-hidden="true">&times;</span>
+	    	</button>
+	  	</div>
+	  	<div id="res" class="modal-body" style="width:100%; height:80%">
+		<div class="widget_wrap" style="width:100%;height:100%;display:inline-block;">
+			<iframe src="https://www.zomato.com/widgets/res_search_widget.php?entity_id=281&entity_type=city&city_id=281&theme=dark&widgetType=custom&sort=popularity" style="position:relative;width:100%;height:100%;" border="0" frameborder="0"></iframe>
+		</div>
+	  	</div>
+	  	<div class="modal-footer">
+	    	<button type="button" class="btn btn-primary btn-xs" data-dismiss="modal">Close</button>
+	  	</div>
+		</div>
+		</div>
+	</div>
+
+
+
+		<!--traffic-->
+		<div class="modal fade" id="trafficModal" >
+			<div class="modal-dialog" role="document" style="width:90%; height: 90% ">
+				<div class="modal-content" style="width:100%; height:100% ">
+					<div class="modal-header">
+						<h2 class="modal-title" id="trafficModalLabel">Los Angeles Traffic</h2>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		  				<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div id="map_traffic" class="modal-body" style="width:100%; height: 80% ">
+
+
+				</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary btn-xs" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<!--transport-->
+			<div class="modal fade" id="transportModal">
+				<div class="modal-dialog" role="document" style="width:90%; height: 90% ">
+					<div class="modal-content" style="width:100%; height: 100% ">
+						<div class="modal-header">
+							<h2 class="modal-title" id="transportModalLabel">Los Angeles Public Transportation Map</h2>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		  				<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div id="map_transport"  class="modal-body" style="width:100%; height: 80% ">
+
+
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary btn-xs" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+<script>
+
+	    var map;//for google maps
+		var places;//for the hotale places
+	    var infowindow;//to hold hotels informations
+
+        coordinate = {lat: 34.0522, lng: -118.2437};//city coordinate
+				//will hold the maps for a city
+       var common_map = function(x){
+           console.log(x);
+            var map = new google.maps.Map(document.getElementById(x), {
+					zoom: 13,
+					center:coordinate
+		   });
+            return map;
+      }
+			//to inilzeing masps
+	  var initMap = function() {
+			var trafficLayer = new google.maps.TrafficLayer();
+			trafficLayer.setMap(common_map('map_traffic'));
+
+            var transitLayer = new google.maps.TransitLayer();
+            transitLayer.setMap(common_map('map_transport'));
+
+	  }
+
+		  $('.trafficModal').on('click', function () {
+			$('#trafficModal').modal('show').on('shown.bs.modal', function () {
+				common_map('map_traffic');
+                var trafficLayer = new google.maps.TrafficLayer();
+			   trafficLayer.setMap(common_map('map_traffic'));
+
+			});
+		});
+
+	  $('.transportModal').on('click', function () {
+			$('#transportModal').modal('show').on('shown.bs.modal', function () {
+				common_map('map_transport');
+                var transitLayer = new google.maps.TransitLayer();
+                 transitLayer.setMap(common_map('map_transport'));
+			});
+		});
+
+		$('.hotelsModal').on('click', function () {
+			$('#hotelsModal').modal('show').on('shown.bs.modal', function () {
+
+			  infowindow = new google.maps.InfoWindow();
+			  var service = new google.maps.places.PlacesService(common_map('map_place'));
+			  service.nearbySearch({
+				location: coordinate,
+				radius: 500,
+				type: ['store']
+			  }, callback);
+			});
+		});
+    </script>
+   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFbs8xFC9jvVb0GVmF-j9B0RXTFSc0iNU&libraries=places&callback=initMap"></script>
+
+	</body>
+
+</html>

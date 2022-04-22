@@ -1,0 +1,19 @@
+Zomato API:
+
+Key: 8cda5ea516e5ac19d9cc316cdea8f486
+
+request url: https://developers.zomato.com/api/v2.1/search?entity_type=city&q=Dallas&count=10&sort=rating&order=desc
+
+Open Weather Map Current Weather:
+
+Key: c41f983ab41ba45e3da75f49e0bbafc0
+
+
+Google maps:
+
+key: AIzaSyCFbs8xFC9jvVb0GVmF-j9B0RXTFSc0iNU
+
+
+google places:
+
+key: AIzaSyAW7uuRp4EVuroGh8K5clLKWhnjvS_sDP8

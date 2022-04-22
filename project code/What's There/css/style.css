@@ -1,0 +1,175 @@
+
+/* CSS Grid Formatting v0.3*/
+body{
+	display: grid;
+
+	background: url('../img/mainmenu.jpg') no-repeat center center fixed;
+	background-size: cover; /* resize image */
+	grid-template-columns: 60px 1fr; /* Two Rows and 2 columns*/
+	grid-template-rows: 1fr 5%;
+	grid-template-areas: "sidebar  main"
+											 "sidebar footer";
+	font-family: Palatino Linotype;
+	height: 100vh;
+	width: 100vw;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+/* Parent nav class for sidebar buttons */
+.aside {
+  grid-area: sidebar;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	background: #383332; /* Nav Color */
+/*	background-color: #ffffff; */
+	font-size: 150%;
+	border: solid #9ca4a6 2px; /* Add right, left, bottom borders to all main-nav elements */
+	position:fixed;
+	height: 100%;
+	width: 60px;
+	}
+
+/* show icons */
+.aside i {
+	display: block;
+	color: white;
+}
+
+.aside i:hover{
+	box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)
+}
+
+
+.main{
+	grid-area: main;
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-areas: "header"
+											 "content"
+											 "content";
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+
+}
+
+.main h1{
+	grid-area: header;
+	font-size: 1000%;
+	color: #DEAC27;
+	text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;
+
+}
+
+.main h2{
+	font-size: 500%;
+	color: #DEAC27;
+	text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;
+
+}
+
+.content{
+	grid-area: content;
+	display: block;
+	text-align: center;
+	background-color: white;
+	border-style: inset;
+	border-width: 2px;
+
+}
+
+/* search bar input tags */
+input[type=text] {
+    width: 30%;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width */
+input[type=text]:focus {
+    width: 40%;
+}
+
+.footer {
+  grid-area: footer;
+	color: black;
+	style: bold;
+	font-size: 200%;
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/*=============================
+  larger screens
+===============================*/
+
+@media only screen and (min-width:1441px) {
+  body {
+    grid-template-columns: 60px 1fr;
+		grid-template-areas: "sidebar main"
+			                   "sidebar footer";
+  }
+}
+
+ /*===========================================================
+  Change "What's There" font size between the min and max width
+=================================================================*/
+@media only screen and (max-width: 800px){
+	.main h1{
+		font-size: 80px;
+		text-align: center;
+	}
+
+}
+
+.calstyle{
+
+position: absolute;
+width: 500px;
+height: 300px;
+z-index: 15;
+top: 50%;
+left: 50%;
+margin: -100px 0 0 -150px;
+background: white;
+text-align: center;
+
+overflow-y: scroll;
+    border: 3px solid #73AD21;
+}
+/* DROPDOWN BOX FOR ROAD ICON/CITY */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+/*
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.desc {
+    padding: 15px;
+    text-align: center;
+}
+*/

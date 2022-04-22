@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Trip Budget Calculator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css"> <!-- Link with style.css -->
+        <!-- Bootstrap and js Main -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>﻿
+
+        <script type="text/javascript">
+
+
+          var hide=0;// 0 = city; 1 = travelars; 2 = days; 3 = travelstyle; 4 = what to include; 5 = tickets; 6 = final results
+          var mycity;//to hold the city choice of the user
+          var mytravelars;//to hold number of travelars min = 1 max = 99
+          var mydays; // to hold number of days min = 1 day, max = 1 year
+          var mytravelstyle;//to hold the user choice of travel style
+          var mygeneral;//to hold the total cost of general stuff per day
+          var myticket;//to hold the total cost of the tickets
+
+          var ticketprice;//to hold tickets prices
+          var avr;//to hold the avrage cost to travel per day per person
+
+          /*
+           0 Food
+           1 Accommodation
+           2 Local Transportation
+           3 Tips and Handouts
+           4 Alcohol
+           5 Entertainment
+          */
+
+          //this function will dispay the final results of the calculations
+          function final(){
+              document.getElementById('perperson').value = avr;//avrage per person per day
+              document.getElementById('perpersonall').value = avr*mydays;//avrage per person for all the trip
+              document.getElementById('group').value = avr*mytravelars;//avrage per group per day
+              document.getElementById('groupall').value = (avr*mytravelars)*mydays;//avrage per group  for all the trip
+              var y = mygeneral*mydays;//y will hold the results of general * days of the trip
+              //alert(y);
+              document.getElementById('perperson2').value = (myticket/mytravelars) + ( y);//results of calculations after the user spicifcations
+              document.getElementById('group2').value = (y *mytravelars)+myticket;
+
+          }
+
+          //this function calculate the tickets prices
+          function tickets(){
+
+              var ticket = document.getElementsByClassName('ticket');//getting the ticket propaties
+              myticket=0;//resetting the var before starting calculations
+              for(var i = 0; i < ticket.length; i++){//for loop to calculate the total price of the tickets
+                myticket = myticket + (parseInt(ticket[i].value) * ticketprice[i]);
+              }
+              //alert(myticket);
+
+              final();//calling final function to work
+          }
+          //this function will work to display and update the tickets for each city
+          function addtickits(){
+            //if city was dallas this will work
+            if(mycity == "Dallas"){
+              //updating the paragraphs, to dallas placeses names
+                var ap = ["Dallas Arboretum and Botanical Garden - $15" , "Dallas World Aquarium - $22" , "Sixth Floor Museum at Dealey Plaza - $16" ,
+                 "Dallas Heritage Village - $9", "Six Flags Over Texas - $79" , "Dallas Zoo - $15" , "George W. Bush Presidential Center - $16" , "Nasher Sculpture Center - $10",
+                  "Old Red Museum of Dallas County History & Culture - $10" , "Reunion Tower - $17"];
+                  //updating the pic to dallas places pics
+                  var ai = ["DAB_15_p8.jpg", "DWA_22.jpg", "SFM_16.jpg",
+                  "DHV_9.jpg" , "SIXFLAGS_79.jpg" , "DZOO_15.jpg" , "GBPC_16.jpg" , "NSC_10.jpg",
+                  "ORM_10.jpg" , "RT_17.jpg"];
+                var i = 0;
+                //for loop to assign the names to each paragraph
+                for(i = 0; i < document.getElementsByClassName('tp').length; i++){
+                    document.getElementsByClassName('tp')[i].innerHTML = ap[i];
+
+                }
+                i = 0;
+                //for loop to assign pics to each img
+                for(i = 0; i < document.getElementsByClassName('ti').length; i++){
+
+                    document.getElementsByClassName('ti')[i].src = ai[i];
+                }
+                //updating the tickests prices
+                ticketprice = [15,22,16,9,79,15,16,10,10,17];
+                //alert(ticketprice[9]);
+            }
+
+
+            else if (mycity == "Austin") {
+              var ap = ["Austin Aquarium - $14" , "Austin Zoo - $11" , "Blanton Museum of Art - $9" ,
+               "Bullock Texas State History Museum - $13", "French Legation - $5" , "Mexic-Arte Museum - $5" , "Museum of the Weird - $12" , "Texas Memorial Museum - $7",
+                "Umlauf Sculpture Garden and Museum - $5" , "Zilker Botanical Garden - $3"];
+
+                var ai = ["Austin_Aquarium_14.jpg" , "Austin_Zoo_11.jpg" , "Blanton_Museum_of_Art_9.jpg" ,
+                 "Bullock_Texas_State_History_Museum_13.jpg", "French_Legation_5.jpg" , "Mexic-Arte_Museum_5.jpg" , "Museum_of_the_Weird_12.jpg" , "Texas_Memorial_Museum_7.jpg",
+                  "Umlauf_Sculpture_Garden_and_Museum_5.jpg" , "Zilker_Botanical_Garden_3.jpg"];
+              var i = 0;
+              for(i = 0; i < document.getElementsByClassName('tp').length; i++){
+                  document.getElementsByClassName('tp')[i].innerHTML = ap[i];
+
+              }
+              i = 0;
+              for(i = 0; i < document.getElementsByClassName('ti').length; i++){
+
+                  document.getElementsByClassName('ti')[i].src = ai[i];
+              }
+              ticketprice = [14,11,9,13,5,5,12,7,5,3];
+              //alert(ticketprice[9]);
+
+            }
+
+
+
+            else {//Los_Angeles
+
+              var ap = ["Aquarium of the Pacific - $30" , "Disneyland - $110" , "Hollywood Museum - $15" ,
+               "Hollywood Wax Museum - $23", "Los Angeles County Museum of Art - $25" , "Los Angeles Zoo - $21" , "Museum of Contemporary Art, Los Angeles - $15" , "Natural History Museum of Los Angeles County - $12",
+                "Petersen Automotive Museum - $16" , "Universal Studios Hollywood - $105"];
+
+                var ai = ["Aquarium_of_the_Pacific_30.jpg" , "Disneyland_110.png" , "Hollywood_Museum_15.jpg" ,
+                 "Hollywood_Wax_Museum_23.jpg", "Los Angeles_County_Museum_of_Art_25.jpg" , "Los_Angeles_Zoo_21.jpg" , "Museum_of_Contemporary_Art,_Los_Angeles_15.jpg" , "Natural_History_Museum_of_Los_Angeles_County_12.jpg",
+                  "Petersen_Automotive_Museum_16.jpg" , "Universal_Studios_Hollywood_105.jpg"];
+
+              var i = 0;
+              for(i = 0; i < document.getElementsByClassName('tp').length; i++){
+                  document.getElementsByClassName('tp')[i].innerHTML = ap[i];
+
+              }
+              i = 0;
+              for(i = 0; i < document.getElementsByClassName('ti').length; i++){
+
+                  document.getElementsByClassName('ti')[i].src = ai[i];
+              }
+              ticketprice = [30,110,15,23,25,21,15,12,16,105];
+              //alert(ticketprice[9]);
+
+            }
+
+          }
+
+          //this function will update the general things to calculate for each city
+          function WhatToCalcValues(){
+            var general = document.getElementsByClassName('general');//getting the class elements
+            //if city of choice was dallas this will work
+            if(mycity == "Dallas"){
+              //alert("hello");
+                  if(mytravelstyle == "mid"){//if travel style was mid this will work
+                    general[0].value = 28;//food
+                    general[1].value = 58;//Accommodation
+                    general[2].value = 23;//Transportation
+                    general[3].value = 15;//Tips
+                    general[4].value = 10;//Alcohol
+                    general[5].value = 10;//Entertainment
+                    avr = 103;
+
+                  }
+                  else if (mytravelstyle == "cheap") {
+                    general[0].value = 12;//food
+                    general[1].value = 24;//Accommodation
+                    general[2].value = 10;//Transportation
+                    general[3].value = 15;//Tips
+                    general[4].value = 5;//Alcohol
+                    general[5].value = 4;//Entertainment
+                    avr = 44;
+                  }
+
+                  else {//luxury
+                    general[0].value = 62;//food
+                    general[1].value = 133;//Accommodation
+                    general[2].value = 45;//Transportation
+                    general[3].value = 15;//Tips
+                    general[4].value = 19;//Alcohol
+                    general[5].value = 29;//Entertainment
+                    avr = 228;
+                  }
+
+
+            }
+
+            else if (mycity == "Austin") {
+
+              if(mytravelstyle == "mid"){
+                general[0].value = 28;//food
+                general[1].value = 208;//Accommodation
+                general[2].value = 223;//Transportation
+                general[3].value = 30;//Tips
+                general[4].value = 22;//Alcohol
+                general[5].value = 24;//Entertainment
+                avr = 371;
+
+              }
+              else if (mytravelstyle == "cheap") {
+                general[0].value = 11;//food
+                general[1].value = 62;//Accommodation
+                general[2].value = 73;//Transportation
+                general[3].value = 15;//Tips
+                general[4].value = 10;//Alcohol
+                general[5].value = 9;//Entertainment
+                avr = 126;
+              }
+
+              else {//luxury
+                general[0].value = 73;//food
+                general[1].value = 824;//Accommodation
+                general[2].value = 781;//Transportation
+                general[3].value = 45;//Tips
+                general[4].value = 47;//Alcohol
+                general[5].value = 76;//Entertainment
+                avr = 1329;
+
+              }
+            }
+            else{//Los_Angeles
+              if(mytravelstyle == "mid"){
+                general[0].value = 37;//food
+                general[1].value = 135;//Accommodation
+                general[2].value = 33;//Transportation
+                general[3].value = 2;//Tips
+                general[4].value = 11;//Alcohol
+                general[5].value = 69;//Entertainment
+                avr = 220;
+
+              }
+              else if (mytravelstyle == "cheap") {
+                general[0].value = 14;//food
+                general[1].value = 46;//Accommodation
+                general[2].value = 13;//Transportation
+                general[3].value = 1;//Tips
+                general[4].value = 5;//Alcohol
+                general[5].value = 23;//Entertainment
+                avr = 77;
+              }
+
+              else {//luxury
+                general[0].value = 102;//food
+                general[1].value = 438;//Accommodation
+                general[2].value = 94;//Transportation
+                general[3].value = 3;//Tips
+                general[4].value = 23;//Alcohol
+                general[5].value = 232;//Entertainment
+                avr = 693;
+
+              }
+            }
+              mygeneral = 0;//resetting general values
+              var i;
+              //for loop to calculate the things that the user checked
+              for(i = 0; i < general.length; i++){
+                if(general[i].checked == true){//if it was checked
+                  mygeneral = mygeneral + parseInt(general[i].value);
+                }
+                else {
+                  //skip
+                }
+              }
+              //alert(mygeneral);
+          }
+          //this function calculates the travel style of the user
+          function TravelStyle(){
+
+
+             var cheap = document.getElementById('cheap');//getting the id elemnts
+             var mid = document.getElementById('mid');
+             var luxury = document.getElementById('luxury');
+
+
+             if (mid.checked == true) {//if the user choose mid this will work
+               mytravelstyle = mid.value;
+             }
+             else if (cheap.checked == true) {//cheap
+               mytravelstyle = cheap.value;
+             }
+             else {//luxury
+               mytravelstyle = luxury.value;
+             }
+
+             //alert(mytravelstyle);
+          }
+          //this function calculates howmany days will the user travel
+          function days(){
+            mydays = document.getElementById('number_of_days').value;//getting the values of the id number_of_days
+            if(mydays == ""){//if the user tried to pass without choosing number of days
+              alert("Error: you must have at least 1 day");//disply error
+              return false;
+            }
+            else if (mydays < 1) {// if user enters 0 or lees
+              alert("Error: cannot accept less than 1 day");
+            }
+            else {//will pass
+              //alert(mydays);
+              return true;
+            }
+
+          }
+          //this function calculates number of travelers
+          function travelars(){
+              mytravelars = document.getElementById('number_of_travelars').value;//getting the values of id number_of_travelars
+              if(mytravelars == ""){//if the user tried to pass without choosing number of travelers
+                alert("Error: you must have at least 1 traveler");//disply error
+                return false;
+              }
+              else if (mytravelars < 1) {// if user enters 0 or lees
+                alert("Error: cannot accept less than 1 traveler");
+              }
+              else {//will pass
+                //alert(mytravelars);
+                return true;
+              }
+          }
+          //this function calculates which city the user choose
+          function city(){
+            var Dallas = document.getElementById('Dallas');//getting the id elemnts
+            var Austin = document.getElementById('Austin');
+            var Los_Angeles = document.getElementById('Los_Angeles');
+
+            if(Dallas.checked == true){//if user choose dallas
+              mycity = Dallas.value;
+            }
+            else if (Austin.checked == true) {
+              mycity = Austin.value;
+            }
+            else {//Los_Angeles.checked == true
+              mycity = Los_Angeles.value;
+            }
+              //alert(mycity);
+
+          }
+          //this function will hide all the ids exept for city id
+          function main(){
+
+            document.getElementById('city').style.display = "block";//will be dispayed
+            document.getElementById('travelars').style.display = "none";//hidden
+            document.getElementById('days').style.display = "none";//hidden
+            document.getElementById('TravelStyle').style.display = "none";
+            document.getElementById('WhatToCalc').style.display = "none";
+            document.getElementById('tickets').style.display = "none";
+            document.getElementById('final').style.display = "none";
+          }
+          //this function will work if user clicked on back button
+          function back(){
+              if(hide == 0){//if it was on city id
+                alert("Cannot go back any further");//display error
+              }
+              else{
+                hide--;//will go back to the previos id
+                sw();//calling sw function
+              }
+
+          }
+          //this function will work if user clicked on next button
+          function next(){
+              if(hide == 6){//if it was on the results id
+                  alert("Cannot go any further");//disply error
+              }
+              else {
+
+                if(hide == 0){//if it was on city
+                  city();//calling city function
+                }
+
+                else if (hide == 1) {// if it was on number of travelers
+                  travelars();//calling travelers function
+                  if(mytravelars == "")//if they number of travelars wasn't chosen
+                  {
+                    return;//will breack the function
+                  }
+                  else if (mytravelars < 1) {// if 0 or less
+                    return;
+                  }
+                  else {
+                    //skip
+                  }
+                }
+                else if (hide == 2) {//number of days
+                  days();//calling number of days function
+                  if(mydays == "")//if number of days wasn't chosen by user
+                  {
+                    return;//will breack
+                  }
+                  else if (mydays < 1) {
+
+                    return;
+                  }
+                  else {
+                    //skip
+                  }
+                }
+                else if (hide == 3) {//travel style id
+                  TravelStyle();//calling travel style function
+                }
+                else if (hide == 4) {//general
+                  WhatToCalcValues();//calling general function
+                  addtickits();//calling add tickets functions to update the tikcets
+                }
+                else if (hide == 5) {//tickets
+
+                  tickets();//calling tickets function
+                }
+
+                hide++;//will go for the next id
+                sw();//calling switch function
+              }
+          }
+          //this function switchs between the ids to hide them and display them
+          function sw(){
+            var city = document.getElementById('city');//getting the city id elements
+            var travelars = document.getElementById('travelars');
+            var days = document.getElementById('days');
+            var TravelStyle = document.getElementById('TravelStyle');
+            var WhatToCalc = document.getElementById('WhatToCalc');
+            var tickets = document.getElementById('tickets');
+            var final = document.getElementById('final');
+
+            if(hide == 0){//if it was city
+              city.style.display="block";//will display city id
+              travelars.style.display="none";//will hide the others
+              days.style.display="none";
+              TravelStyle.style.display="none";
+              WhatToCalc.style.display="none";
+              tickets.style.display="none";
+              final.style.display="none";
+            }
+            else if (hide == 1) {// travelers
+              city.style.display="none";
+              travelars.style.display="block";//diplay travelers and hide the others
+              days.style.display="none";
+              TravelStyle.style.display="none";
+              WhatToCalc.style.display="none";
+              tickets.style.display="none";
+              final.style.display="none";
+            }
+            else if (hide == 2) {//days
+              city.style.display="none";
+              travelars.style.display="none";
+              days.style.display="block";//display days and hide the others
+              TravelStyle.style.display="none";
+              WhatToCalc.style.display="none";
+              tickets.style.display="none";
+              final.style.display="none";
+            }
+            else if (hide == 3) {//travel style
+              city.style.display="none";
+              travelars.style.display="none";
+              days.style.display="none";
+              TravelStyle.style.display="block";//display travel style and hide the others
+              WhatToCalc.style.display="none";
+              tickets.style.display="none";
+              final.style.display="none";
+            }
+            else if (hide == 4) {//general
+              city.style.display="none";
+              travelars.style.display="none";
+              days.style.display="none";
+              TravelStyle.style.display="none";
+              WhatToCalc.style.display="block";//display general and hide the others
+              tickets.style.display="none";
+              final.style.display="none";
+            }
+            else if (hide == 5) {//tickets
+              city.style.display="none";
+              travelars.style.display="none";
+              days.style.display="none";
+              TravelStyle.style.display="none";
+              WhatToCalc.style.display="none";
+              tickets.style.display="block";//will display tickets and hide the others
+              final.style.display="none";
+            }
+            else{//results
+              city.style.display="none";
+              travelars.style.display="none";
+              days.style.display="none";
+              TravelStyle.style.display="none";
+              WhatToCalc.style.display="none";
+              tickets.style.display="none";
+              final.style.display="block";//display results and hide the others
+            }
+          }
+          //this function will toggel between pics when the user check on a city "it will display the city img"
+          function cityimage(){
+            if( document.getElementById('Dallas').checked == true){//if the user checked on Dallas
+              document.getElementById('cimg').src = 'Dallas1.jpg';//Dallas pic will show
+            }
+            else if (document.getElementById('Austin').checked == true) {//Austin
+              document.getElementById('cimg').src = 'Austin_Evening.jpg';
+            }
+            else {//L A
+              document.getElementById('cimg').src = 'Los_Angeles.jpg';
+            }
+          }
+
+        </script>
+
+    </head>
+
+
+
+    <body onload="main()">
+
+      <div class="aside">
+        <a href="../index.html"><i class="glyphicon glyphicon-off"></i></a>
+        <div class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-road"></i></a>
+          <div class="dropdown-menu">
+            <li><a href="../dallas.html">Dallas</a></li>
+            <li><a href="../austin.html">Austin</a></li>
+            <li><a href="../losangeles.html">Los Angeles</a></li>
+          </div>
+        </div>
+        <a href="./cal_test.html"><i class="glyphicon glyphicon-usd"></i></a>
+        <a href="../about.html"><i class="glyphicon glyphicon-exclamation-sign"></i></a>
+      </div>
+
+
+
+        <h1 style="text-align:center;">Trip Calculator</h1>
+
+        <div class="calstyle">
+
+
+        <div id="city" ><!--0 -->
+        <img id="cimg" height="100" width="100" src="Dallas1.jpg"/>
+        <br>
+        <h2>Choose a City</h2>
+        Dallas <input type="radio" name="citychoice" id="Dallas"  value="Dallas" checked onclick="cityimage()"> <br>
+        Austin <input type="radio" name="citychoice" id="Austin" value="Austin" onclick="cityimage()" > <br>
+        Los_Angeles <input type="radio" name="citychoice" id="Los_Angeles" value="Los_Angeles" onclick="cityimage()"> <br><br>
+            <input value="next" type="submit" onclick="next()">
+      </div>
+
+      <div id="travelars" ><!--1 -->
+
+
+        <h2> Number of travelars </h2><br>
+          <input id="number_of_travelars" type="number" name="quantity" min="1"> <br>
+
+          <input value="back" type="submit" onclick="back()">    <input value="next" type="submit" onclick="next()">
+      </div>
+
+
+      <div id="days" ><!--2 -->
+        <h2> Number of days </h2><br>
+        <input id="number_of_days" type="number" name="quantity" min="1"> <br>
+        <input value="back" type="submit" onclick="back()">    <input value="next" type="submit" onclick="next()">
+      </div>
+
+      <div id="TravelStyle" ><!--3 -->
+        <h2> Travel Style </h2><br>
+
+        cheap <input type="radio" name="stylechoice" id="cheap" value="cheap" > <br>
+        mid <input type="radio" name="stylechoice" id="mid" value="mid" checked> <br>
+        luxury <input type="radio" name="stylechoice" id="luxury" value="luxury" > <br><br>
+
+        <input value="back" type="submit" onclick="back()">    <input value="next" type="submit" onclick="next()">
+      </div>
+
+      <div id="WhatToCalc" ><!--4 -->
+        <h2> What to include </h2><br>
+
+        Food <input type="checkbox" class="general"  value="" > <br>
+        Accommodation <input type="checkbox" class="general" value="" > <br>
+        Local Transportation <input type="checkbox" class="general" value="" > <br>
+        Tips and Handouts <input type="checkbox" class="general" value="" > <br>
+        Alcohol <input type="checkbox" class="general" value="" > <br>
+        Entertainment <input type="checkbox" class="general" value="" > <br><br>
+
+        <input value="back" type="submit" onclick="back()">    <input value="next" type="submit" onclick="next()">
+      </div>
+
+
+
+      <div id="tickets" ><!--5 -->
+        <h2> Add tickets </h2><br>
+
+        <p class="tp"> </p> <br><!-- place name -->
+        <img class="ti" height="100" width="100" src=""/><input type="number" min="0" max="99" class="ticket" value="0" > <br><!-- place img and user input number -->
+        <p class="tp"> </p> <br>
+        <img class="ti" height="100" width="100" src=""/><input type="number" min="0" max="99" class="ticket" value="0" > <br>
+        <p class="tp"> </p> <br>
+        <img class="ti" height="100" width="100" src=""/><input type="number" min="0" max="99" class="ticket" value="0" > <br>
+        <p class="tp"> </p> <br>
+        <img class="ti" height="100" width="100" src=""/><input type="number" min="0" max="99" class="ticket" value="0" > <br>
+        <p class="tp"> </p> <br>
+        <img class="ti" height="100" width="100" src=""/><input type="number" min="0" max="99" class="ticket" value="0" > <br>
+        <p class="tp"> </p> <br>
+        <img class="ti" height="100" width="100" src=""/><input type="number" min="0" max="99" class="ticket" value="0" > <br>
+        <p class="tp"> </p> <br>
+        <img class="ti" height="100" width="100" src=""/><input type="number" min="0" max="99" class="ticket" value="0" > <br>
+        <p class="tp"> </p> <br>
+        <img class="ti" height="100" width="100" src=""/><input type="number" min="0" max="99" class="ticket" value="0" > <br>
+        <p class="tp"> </p> <br>
+        <img class="ti" height="100" width="100" src=""/><input type="number" min="0" max="99" class="ticket" value="0" > <br>
+        <p class="tp"> </p> <br>
+        <img class="ti" height="100" width="100" src=""/><input type="number" min="0" max="99" class="ticket" value="0" > <br><br>
+
+        <input value="back" type="submit" onclick="back()">    <input value="next" type="submit" onclick="next()">
+      </div>
+
+
+
+      <div id="final" ><!-- 6 -->
+        <h2> The final results </h2><br>
+
+
+        <p>Average Daily Cost per person is  <output id="perperson"></output> </p><br>
+        <p>Average Cost per person for the total trip is  <output id="perpersonall"></output> </p><br>
+        <br>
+        <p>Average Daily Cost for the group is  <output id="group"></output> </p><br>
+        <p>Average Cost for the group for the total trip is  <output id="groupall"></output> </p><br>
+        <br>
+        <p>With tickets and general per person <output id="perperson2"></output> </p> <br>
+        <br>
+        <p>With tickets and general for the group <output id="group2"></output> </p><br>
+        <br>
+
+          <input value="back" type="submit" onclick="back()">
+      </div>
+
+	</div>
+
+    </body>
+</html>
